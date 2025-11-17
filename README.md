@@ -9,8 +9,8 @@ Matakuliah : Pemrograman Web Pert 10 <br>
 - ``mysql -u root``
 - ``create database latihan1;``
 - ``use latihan1;``
-- ``CREATE TABLE data_barang ( <br>
-    -> id_barang int(10) auto_increment Primary Key,
+- ``CREATE TABLE data_barang ( <br>``
+    ``-> id_barang int(10) auto_increment Primary Key,
     -> kategori varchar(30),
     -> nama varchar(30),
     -> gambar varchar(100),
