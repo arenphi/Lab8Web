@@ -11,7 +11,7 @@ Matakuliah : Pemrograman Web Pert 10 <br>
 - ``use latihan1;``
 Output:
 <p align="center">
-<img src="database1.png" width="70%">
+<img src="img/database1.png" width="70%">
 </p>
 <br>
 
