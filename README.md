@@ -27,7 +27,7 @@ B. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
     ``-> ('Elektronik', 'HP Xiaomi Android', 'hp_xiaomi.jpg', 1000000, 1400000, 5),``<br>
     ``-> ('Elektronik', 'HP OPPO Android', 'hp_oppo.jpg', 1800000, 2300000, 5);``<br>
 
-``CREATE TABLE data_barang ( 
+```CREATE TABLE data_barang ( 
     id_barang int(10) auto_increment Primary Key, 
     kategori varchar(30), 
     nama varchar(30), 
@@ -35,4 +35,4 @@ B. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
     harga_beli decimal(10,0), 
     harga_jual decimal(10,0), 
     stok int(4) 
-   ); ``
+   );```
