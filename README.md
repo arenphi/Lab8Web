@@ -9,9 +9,10 @@ Matakuliah : Pemrograman Web Pert 10 <br>
 - ``mysql -u root``
 - ``create database latihan1;``
 - ``use latihan1;``
+
 Output:
 <p align="center">
-<img src="img/database1.png" width="70%">
+<img src="img/database1.png">
 </p>
 <br>
 
