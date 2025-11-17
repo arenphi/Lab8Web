@@ -1,16 +1,17 @@
-# Praktikum 8: PHP dan Database MySQL
+# Praktikum 8: PHP dan Database MySQL (CRUD Sederhana)
 Nama : Reynaldi Nugraha Putra <br>
 NIM  : 312410278 <br>
 Kelas : TI.24.A.3 <br>
 Matakuliah : Pemrograman Web Pert 10 <br>
 
-### 1. Membuat Database MySql/MariaDB Menggunakan CMD
+### I. Membuat Database MySql/MariaDB Menggunakan CMD
 - ``cd C:\xampp\mysql\bin``
 - ``mysql -u root``
 - ``create database latihan1;``
 - ``use latihan1;``
 
-a. Membuat struktur tabel untuk menyimpan data barang.
+A. Membuat Struktur Tabel.
+Tabel utama yang digunakan adalah data_barang. Tabel ini dibuat dengan perintah SQL berikut:
  ```
 CREATE TABLE data_barang ( 
      id_barang int(10) auto_increment Primary Key, 
@@ -23,7 +24,7 @@ CREATE TABLE data_barang (
     );
 ```
 
-b. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
+B. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
 ```
    INSERT INTO data_barang (kategori, nama, gambar, harga_beli, harga_jual, stok)
     VALUES ('Elektronik', 'HP Samsung Android', 'hp_samsung.jpg', 2000000, 2400000, 5),
@@ -31,7 +32,9 @@ b. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
     ('Elektronik', 'HP OPPO Android', 'hp_oppo.jpg', 1800000, 2300000, 5);
 ```
 
-### 2. Membuat File Koneksi Database
+### II. Koneksi Database
+Aplikasi menggunakan database latihan1. Konfigurasi koneksi diatur dalam koneksi.php.
+file: `koneksi.php`
 ```
 <?php 
 $host = "localhost"; 
@@ -53,6 +56,7 @@ Output:
 img
 
 ### 3. READ: Menampilkan Data (index.php)
+File ini berfungsi untuk menampilkan semua data dari tabel data_barang dalam bentuk tabel HTML.
 ```
 <?php
 include("koneksi.php");
@@ -115,7 +119,19 @@ $result = mysqli_query($conn, $sql);
 </body>
 </html>
 ```
+### Penjelasan:
+Kode,Penjelasan
+"include(""koneksi.php"");",Memanggil file koneksi untuk terhubung ke database.
+$sql = 'SELECT * FROM data_barang ORDER BY id_barang DESC';,Query SQL untuk mengambil semua data dan diurutkan dari ID terbesar (terbaru).
+"$result = mysqli_query($conn, $sql);",Menjalankan query ke database.
+if($result && mysqli_num_rows($result) > 0):,Memeriksa apakah query berhasil dan ada baris data yang ditemukan.
+while($row = mysqli_fetch_assoc($result)):,Perulangan untuk menampilkan setiap baris data.
+if(!empty($row['gambar']) && file_exists($row['gambar'])):,Pengecekan apakah data gambar ada dan file gambarnya tersedia di server.
+"number_format($row['harga_beli'],0,',','.');",Memformat angka (harga) dengan pemisah ribuan titik.
+"<a href=""ubah.php?id=..."" >Ubah</a>","Tautan ke halaman ubah, mengirimkan id_barang sebagai parameter."
+"<a href=""hapus.php?id=..."" onclick=""return confirm(...)"">Hapus</a>","Tautan ke halaman hapus, disertai konfirmasi JavaScript."
 Output:
+
 img
 
 ### 3. CREATE: Menambah Data (tambah.php)
