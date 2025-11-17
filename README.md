@@ -55,7 +55,7 @@ if ($conn == false)
 Output: 
 img
 
-### 3. READ: Menampilkan Data (index.php)
+### A. READ: Menampilkan Data (index.php)
 File ini berfungsi untuk menampilkan semua data dari tabel data_barang dalam bentuk tabel HTML.
 ```
 <?php
@@ -120,21 +120,22 @@ $result = mysqli_query($conn, $sql);
 </html>
 ```
 ### Penjelasan:
-Kode,Penjelasan
-"include(""koneksi.php"");",Memanggil file koneksi untuk terhubung ke database.
-$sql = 'SELECT * FROM data_barang ORDER BY id_barang DESC';,Query SQL untuk mengambil semua data dan diurutkan dari ID terbesar (terbaru).
-"$result = mysqli_query($conn, $sql);",Menjalankan query ke database.
-if($result && mysqli_num_rows($result) > 0):,Memeriksa apakah query berhasil dan ada baris data yang ditemukan.
-while($row = mysqli_fetch_assoc($result)):,Perulangan untuk menampilkan setiap baris data.
-if(!empty($row['gambar']) && file_exists($row['gambar'])):,Pengecekan apakah data gambar ada dan file gambarnya tersedia di server.
-"number_format($row['harga_beli'],0,',','.');",Memformat angka (harga) dengan pemisah ribuan titik.
-"<a href=""ubah.php?id=..."" >Ubah</a>","Tautan ke halaman ubah, mengirimkan id_barang sebagai parameter."
-"<a href=""hapus.php?id=..."" onclick=""return confirm(...)"">Hapus</a>","Tautan ke halaman hapus, disertai konfirmasi JavaScript."
+- "`include(""koneksi.php"");`", Memanggil file koneksi untuk terhubung ke database.
+- `$sql = 'SELECT * FROM data_barang ORDER BY id_barang DESC';` ,Query SQL untuk mengambil semua data dan diurutkan dari ID terbesar (terbaru).
+- "`$result = mysqli_query($conn, $sql);`", Menjalankan query ke database.
+- `if($result && mysqli_num_rows($result) > 0):`, Memeriksa apakah query berhasil dan ada baris data yang ditemukan.
+- `while($row = mysqli_fetch_assoc($result)):`, Perulangan untuk menampilkan setiap baris data.
+- `if(!empty($row['gambar']) && file_exists($row['gambar'])):`, Pengecekan apakah data gambar ada dan file gambarnya tersedia di server.
+- "`number_format($row['harga_beli'],0,',','.');`", Memformat angka (harga) dengan pemisah ribuan titik.
+- "`<a href=""ubah.php?id=..."" >Ubah</a>`", "Tautan ke halaman ubah, mengirimkan id_barang sebagai parameter."
+- "`<a href=""hapus.php?id=..."" onclick=""return confirm(...)"">Hapus</a>`", "Tautan ke halaman hapus, disertai konfirmasi JavaScript."
+
 Output:
 
 img
 
-### 3. CREATE: Menambah Data (tambah.php)
+### B. CREATE: Menambah Data (tambah.php)
+File ini berisi form input dan logika PHP untuk memproses data serta file upload.
 ```
 <?php 
 error_reporting(E_ALL); 
@@ -216,10 +217,21 @@ enctype="multipart/form-data">
 </body> 
 </html> 
 ```
+### Penjelasan:
+- `if (isset($_POST['submit']))`, Memeriksa apakah tombol submit (Simpan) telah ditekan.
+- `$file_gambar = $_FILES['file_gambar'];`, Mengambil data file yang diunggah.
+- `if ($file_gambar['error'] == 0)`, Memeriksa apakah tidak ada error saat upload.
+- "`$filename = str_replace(' ', '_',$file_gambar['name']);`", Mengganti spasi pada nama file menjadi underscore.
+- `move_uploaded_file(...)`, Fungsi untuk memindahkan file dari lokasi sementara ke folder /gambar/.
+- "`$sql = 'INSERT INTO data_barang (nama, kategori,harga_jual, harga_beli, stok, gambar) ...`", Query SQL untuk menyimpan data baru.
+- `header('location: index.php');`, Mengarahkan kembali ke halaman index.php setelah penyimpanan berhasil.
+- "`<form method=""post"" action=""tambah.php"" enctype=""multipart/form-data"">`", Atribut penting untuk memungkinkan pengiriman data formulir dan file.
+
 Output:
 img
 
-### 3. UPDATE: Mengubah Data (ubah.php)
+### C. UPDATE: Mengubah Data (ubah.php)
+File ini berfungsi untuk mengambil data barang berdasarkan ID dan memperbaruinya.
 ```
 <?php
 error_reporting(E_ALL);
@@ -395,10 +407,22 @@ if (isset($_POST['submit'])) {
 </body>
 </html>
 ```
+### Penjelasan
+- "`function is_select($var, $val)`", "Fungsi pembantu untuk mencetak `selected=""selected"` pada `<option>` yang cocok dengan nilai database."
+- "`if (isset($_GET[""id""])) { ... } else { ... }`", Logika untuk menentukan ID barang: dari URL (`$_GET`) atau mengambil ID barang pertama jika URL kosong.
+- "`mysqli_real_escape_string($conn, $_GET[""id""])`", Membersihkan input ID untuk keamanan (SQL Injection Prevention).
+- "`$sql = ""SELECT * FROM data_barang WHERE id_barang = '{$id}'"";`", Mengambil data barang yang akan diubah.
+- `if (isset($_POST['submit'])) { ... }`, Logika PHP untuk memproses data yang diubah (mirip `tambah.php`).
+- `if (!empty($gambar_lama) && file_exists($gambar_lama)) { unlink($gambar_lama); }`, Menghapus file gambar lama jika user mengupload gambar baru.
+- "`$sql_update = ""UPDATE data_barang SET ... WHERE id_barang = '{$id}'"";`", Query SQL untuk memperbarui data berdasarkan ID.
+- "`<input type=""hidden"" name=""gambar_lama"" value=""..."">`", Menyimpan path gambar lama agar bisa dihapus jika ada gambar baru.
+- "`<input type=""text"" name=""nama"" value=""<?php echo htmlspecialchars($data['nama']); ?>"" ... />`", Mengisi nilai input dengan data yang sudah ada.
+
 Output:
 img
 
-### 3. DELETE: Menghapus Data (hapus.php)
+### D. DELETE: Menghapus Data (hapus.php)
+Skrip sederhana untuk menghapus baris data berdasarkan ID.
 ```
 <?php 
 include_once 'koneksi.php'; 
@@ -408,3 +432,131 @@ $result = mysqli_query($conn, $sql);
 header('location: index.php'); 
 ?> 
 ```
+
+Output:
+img
+
+### III. Styling Tampilan (style.css)
+
+File ini menyediakan styling dasar agar tampilan aplikasi lebih rapi dan mudah dibaca.
+```
+body {
+    font-family: Arial;
+    background: #ffffff;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #003399;
+}
+
+.container {
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+}
+
+table th {
+    background: #f2f2f2;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-size: 15px;
+}
+
+.thumb {
+    width: 120px;
+}
+
+.link {
+    margin-right: 10px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.del {
+    color: red;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+
+/* Penambahan styling untuk form (tambah.php dan ubah.php) */
+
+.input {
+    margin-bottom: 15px;
+}
+
+.input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input input[type="text"],
+.input input[type="number"],
+.input input[type="file"],
+.input select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.submit input[type="submit"] {
+    background-color: #003399;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.submit a.btn {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    color: #333;
+    background: #f9f9f9;
+}
+```
+Fokus Styling:
+- Tabel: Menggunakan collapse border dan padding yang baik (`table`, `th`, `td`).
+- Gambar: Kelas `.thumb` membatasi lebar gambar.
+- Aksi: Tautan `.link` dan tautan hapus (`.del`) memiliki warna berbeda.
+- Form: Styling untuk input dan label pada halaman `tambah.php` dan `ubah.php`.
+
+### Hasil
+Setelah semua file disiapkan dan MySQL Server dijalankan, aplikasi berhasil menjalankan operasi CRUD:
+
+- Read: Daftar barang ditampilkan di index.php.
+
+- Create: Pengguna dapat mengisi form di tambah.php dan data berhasil masuk ke database.
+  
+- Update: Pengguna dapat mengubah data di ubah.php dan perubahan disimpan.
+  
+- Delete: Data berhasil dihapus setelah konfirmasi.
