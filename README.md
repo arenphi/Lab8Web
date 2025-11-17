@@ -12,7 +12,7 @@ Matakuliah : Pemrograman Web Pert 10 <br>
 
 Output:
 <p align="center">
-<img src="img/database1.png">
+<img src="img/database1.png" width="70%">
 </p>
 <br>
 
@@ -38,6 +38,12 @@ B. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
     ('Elektronik', 'HP OPPO Android', 'hp_oppo.jpg', 1800000, 2300000, 5);
 ```
 
+Output:
+<p align="center">
+<img src="img/database2.png" width="70%">
+</p>
+<br>
+
 ### II. Koneksi Database
 Aplikasi menggunakan database latihan1. Konfigurasi koneksi diatur dalam koneksi.php.
 file: `koneksi.php`
@@ -59,7 +65,10 @@ if ($conn == false)
 ?> 
 ```
 Output: 
-img
+<p align="center">
+<img src="img/1.png" width="70%">
+</p>
+<br>
 
 ### A. READ: Menampilkan Data (index.php)
 File ini berfungsi untuk menampilkan semua data dari tabel data_barang dalam bentuk tabel HTML.
@@ -137,8 +146,10 @@ $result = mysqli_query($conn, $sql);
 - "`<a href=""hapus.php?id=..."" onclick=""return confirm(...)"">Hapus</a>`", "Tautan ke halaman hapus, disertai konfirmasi JavaScript."
 
 Output:
-
-img
+<p align="center">
+<img src="img/2.png" width="70%">
+</p>
+<br>
 
 ### B. CREATE: Menambah Data (tambah.php)
 File ini berisi form input dan logika PHP untuk memproses data serta file upload.
@@ -234,7 +245,10 @@ enctype="multipart/form-data">
 - "`<form method=""post"" action=""tambah.php"" enctype=""multipart/form-data"">`", Atribut penting untuk memungkinkan pengiriman data formulir dan file.
 
 Output:
-img
+<p align="center">
+<img src="img/3.png" width="70%">
+</p>
+<br>
 
 ### C. UPDATE: Mengubah Data (ubah.php)
 File ini berfungsi untuk mengambil data barang berdasarkan ID dan memperbaruinya.
@@ -425,7 +439,10 @@ if (isset($_POST['submit'])) {
 - "`<input type=""text"" name=""nama"" value=""<?php echo htmlspecialchars($data['nama']); ?>"" ... />`", Mengisi nilai input dengan data yang sudah ada.
 
 Output:
-img
+<p align="center">
+<img src="img/4.png" width="70%">
+</p>
+<br>
 
 ### D. DELETE: Menghapus Data (hapus.php)
 Skrip sederhana untuk menghapus baris data berdasarkan ID.
@@ -440,7 +457,10 @@ header('location: index.php');
 ```
 
 Output:
-img
+<p align="center">
+<img src="img/5.png" width="70%">
+</p>
+<br>
 
 ### III. Styling Tampilan (style.css)
 
