@@ -66,7 +66,7 @@ if ($conn == false)
 ```
 Output: 
 <p align="center">
-<img src="img/1.png" width="70%">
+<img src="img/2.png" width="70%">
 </p>
 <br>
 
@@ -147,7 +147,7 @@ $result = mysqli_query($conn, $sql);
 
 Output:
 <p align="center">
-<img src="img/2.png" width="70%">
+<img src="img/3.png" width="70%">
 </p>
 <br>
 
@@ -246,7 +246,7 @@ enctype="multipart/form-data">
 
 Output:
 <p align="center">
-<img src="img/3.png" width="70%">
+<img src="img/4.png" width="70%">
 </p>
 <br>
 
@@ -440,7 +440,7 @@ if (isset($_POST['submit'])) {
 
 Output:
 <p align="center">
-<img src="img/4.png" width="70%">
+<img src="img/5.png" width="70%">
 </p>
 <br>
 
@@ -458,7 +458,7 @@ header('location: index.php');
 
 Output:
 <p align="center">
-<img src="img/5.png" width="70%">
+<img src="img/.png" width="70%">
 </p>
 <br>
 
