@@ -20,10 +20,11 @@ A. Membuat struktur tabel untuk menyimpan data barang.
      harga_jual decimal(10,0), 
      stok int(4) 
     );
+```
 
 B. Memasukkan beberapa data awal untuk menguji fungsi Read dan Update.
--  ``INSERT INTO data_barang (kategori, nama, gambar, harga_beli, harga_jual, stok)`` <br>
-    ``-> VALUES ('Elektronik', 'HP Samsung Android', 'hp_samsung.jpg', 2000000, 2400000, 5),``<br>
-    ``-> ('Elektronik', 'HP Xiaomi Android', 'hp_xiaomi.jpg', 1000000, 1400000, 5),``<br>
-    ``-> ('Elektronik', 'HP OPPO Android', 'hp_oppo.jpg', 1800000, 2300000, 5);``<br>
+-  ```INSERT INTO data_barang (kategori, nama, gambar, harga_beli, harga_jual, stok)
+    VALUES ('Elektronik', 'HP Samsung Android', 'hp_samsung.jpg', 2000000, 2400000, 5),
+    ('Elektronik', 'HP Xiaomi Android', 'hp_xiaomi.jpg', 1000000, 1400000, 5),
+    ('Elektronik', 'HP OPPO Android', 'hp_oppo.jpg', 1800000, 2300000, 5);
 
