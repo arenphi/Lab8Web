@@ -9,6 +9,11 @@ Matakuliah : Pemrograman Web Pert 10 <br>
 - ``mysql -u root``
 - ``create database latihan1;``
 - ``use latihan1;``
+Output:
+<p align="center">
+<img src="database1.png" width="70%">
+</p>
+<br>
 
 A. Membuat Struktur Tabel.
 Tabel utama yang digunakan adalah data_barang. Tabel ini dibuat dengan perintah SQL berikut:
