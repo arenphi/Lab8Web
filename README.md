@@ -10,11 +10,11 @@ Matakuliah : Pemrograman Web Pert 10 <br>
 - ``create database latihan1;``
 - ``use latihan1;``
 - ``CREATE TABLE data_barang ( ``<br>
-    ``-> id_barang int(10) auto_increment Primary Key,
-    -> kategori varchar(30),
-    -> nama varchar(30),
-    -> gambar varchar(100),
-    -> harga_beli decimal(10,0),
-    -> harga_jual decimal(10,0),
-    -> stok int(4)
-    -> );``
+    ``-> id_barang int(10) auto_increment Primary Key,`` <br>
+    ``-> kategori varchar(30),``<br>
+    ``-> nama varchar(30),``<br>
+    ``-> gambar varchar(100),``<br>
+    ``-> harga_beli decimal(10,0),``<br>
+    ``-> harga_jual decimal(10,0),``<br>
+    ``-> stok int(4)``<br>
+    ``-> );``
