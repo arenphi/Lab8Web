@@ -1,8 +1,9 @@
 # Praktikum 8: PHP dan Database MySQL (CRUD Sederhana)
-Nama : Reynaldi Nugraha Putra <br>
-NIM  : 312410278 <br>
-Kelas : TI.24.A.3 <br>
-Matakuliah : Pemrograman Web Pert 10 <br>
+### Nama : Reynaldi Nugraha Putra <br>
+### NIM  : 312410278 <br>
+### Kelas : TI.24.A.3 <br>
+### Matakuliah : Pemrograman Web Pert 10 <br>
+#
 
 ### I. Membuat Database MySql/MariaDB Menggunakan CMD
 - ``cd C:\xampp\mysql\bin``
