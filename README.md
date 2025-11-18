@@ -579,25 +579,24 @@ Fokus Styling:
 ### Hasil
 - Read: Daftar barang ditampilkan di index.php.
 <p align="center">
-<img src="img/a.png" width="70%">
+<img src="img/a.png" width="50%">
 </p>
 <br>
 
 - Create: Pengguna dapat mengisi form di tambah.php dan data berhasil masuk ke database.
 <p align="center">
-<img src="img/b.png" width="70%">
+<img src="img/b.png" width="50%">
 </p>
 <br>
 
 - Update: Pengguna dapat mengubah data di ubah.php dan perubahan disimpan.
 <p align="center">
-<img src="img/c.png" width="70%">
- Gambar
+<img src="img/c.png" width="50%">
 </p>
 <br>
 
 - Delete: Data berhasil dihapus setelah konfirmasi.
 <p align="center">
-<img src="img/d.png" width="70%">
+<img src="img/d.png" width="50%">
 </p>
 <br>
