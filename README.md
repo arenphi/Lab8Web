@@ -459,12 +459,11 @@ header('location: index.php');
 
 Output:
 <p align="center">
-<img src="img/.png" width="70%">
+<img src="img/d.png" width="70%">
 </p>
 <br>
 
 ### III. Styling Tampilan (style.css)
-
 File ini menyediakan styling dasar agar tampilan aplikasi lebih rapi dan mudah dibaca.
 ```
 body {
@@ -578,8 +577,6 @@ Fokus Styling:
 - Form: Styling untuk input dan label pada halaman `tambah.php` dan `ubah.php`.
 
 ### Hasil
-Setelah semua file disiapkan dan MySQL Server dijalankan, aplikasi berhasil menjalankan operasi CRUD:
-
 - Read: Daftar barang ditampilkan di index.php.
 <p align="center">
 <img src="img/a.png" width="70%">
